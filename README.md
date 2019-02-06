@@ -1,4 +1,6 @@
-# How do I use this.
+# What is this.
+
+Currently supported version: 1.10.2
 
 This is a dockerized version of the airflow stack.
 
