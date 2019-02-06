@@ -11,19 +11,19 @@ This code was taken from <https://github.com/puckel/docker-airflow> and modified
 2. Modify Docker for Mac settings to work more optimally with airflow.
     * Open up the preferences menu item on Docker for the Mac and modify each tab to look similar to this.
 
-![General](../images/docker1.png?raw=true)
+![General](./images/docker1.png?raw=true)
 
-![File Sharing](../images/docker2.png?raw=true)
+![File Sharing](./images/docker2.png?raw=true)
 
-![Disk](../images/docker3.png?raw=true)
+![Disk](./images/docker3.png?raw=true)
 
-![Advanced](../images/docker4.png?raw=true)
+![Advanced](./images/docker4.png?raw=true)
 
-![Proxies](../images/docker5.png?raw=true)
+![Proxies](./images/docker5.png?raw=true)
 
-![Daemon](../images/docker6.png?raw=true)
+![Daemon](./images/docker6.png?raw=true)
 
-![Kubernetes](../images/docker7.png?raw=true)
+![Kubernetes](./images/docker7.png?raw=true)
 
 
 ## Building, Starting and Stopping Docker.
@@ -47,7 +47,7 @@ Once Docker for Mac is up and running you need to do the following 2 items to st
 ## Here's a typical "I'm creating a helloworld dag" work flow
 
 1. Start out by verifying that everything is running.  Type `docker ps` and your screen should look similar to this:
-![dockerps](../images/docker8.png?raw=true)
+![dockerps](./images/docker8.png?raw=true)
 
 2. Change to the airflow directory using `cd airflow`
       * This is your AIRFLOW_HOME.  The webserver, scheduler, and worker containers all have mounted this directory so they will react to any changes you make here.
