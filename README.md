@@ -1,6 +1,6 @@
 # What is this.
 
-Currently supported version of Airflow: 1.10.2
+**Currently supported version of Airflow: 1.10.2**
 
 This is a dockerized version of the airflow stack.
 
