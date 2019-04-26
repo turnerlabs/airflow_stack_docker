@@ -2,6 +2,8 @@
 
 **Currently supported version of Airflow: 1.10.2**
 
+**Currently supported version of Python: 3.6.7**
+
 This is a dockerized version of the airflow stack.
 
 This code was taken from <https://github.com/puckel/docker-airflow> and modified to follow the patterns that I'm using in AWS.
