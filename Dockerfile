@@ -48,6 +48,7 @@ RUN set -ex \
         python3-gdbm \
         redis-tools \
         openjdk-8-jre \
+        libpq-dev \
         cron \
         git \
         build-essential \
@@ -57,6 +58,7 @@ RUN set -ex \
         locales \
         language-pack-en-base \
         language-pack-en \
+    && apt-get install -yqq --no-install-recommends \
         python3.6-dev \
         python3.6 \
     && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1 \
