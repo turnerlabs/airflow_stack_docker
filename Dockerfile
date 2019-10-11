@@ -6,7 +6,7 @@ ENV TERM linux
 ENV AIRFLOW_HOME=/usr/local/airflow
 
 # Airflow
-ARG AIRFLOW_VERSION=1.10.2
+ARG AIRFLOW_VERSION=1.10.4
 ARG AIRFLOW_HOME=/usr/local/airflow
 ARG AIRFLOW_PACKAGES=all
 

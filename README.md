@@ -1,6 +1,6 @@
 # What is this.
 
-**Currently supported version of Airflow: 1.10.2**
+**Currently supported version of Airflow: 1.10.4**
 
 **Currently supported version of Python: 3.6.7**
 
@@ -68,7 +68,7 @@ from datetime import datetime, timedelta
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime.datetime.now() - datetime.timedelta(minutes=15),
+    'start_date': datetime.now() - timedelta(minutes=15),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
@@ -114,13 +114,14 @@ t3.set_upstream(t1)
 5. Turn on the helloworld dag once you see the on / off toggle button.
 
 6. Once the DAG starts you can monitor airflow's services logs and the tasks logs in the following way:
-      * WebServer - `docker logs -f docker_webserver_1`
-      * Scheduler - `docker logs -f docker_scheduler_1`
-      * Worker - `docker logs -f docker_worker_1`
+      * WebServer - `docker logs -f airflow_stack_docker_webserver_1`
+      * Scheduler - `docker logs -f airflow_stack_docker_scheduler_1`
+      * Worker - `docker logs -f airflow_stack_docker_worker_1`
       * Task output - `cd airflow/logs/helloworld` - although I suggest using the UI for this.
 
 7. You should be able to iterate here and see any code changes you make get applied within a minute or less.
 
 ### TODO's
+
 - Add the ability to load requirements, variables and connections.
-    - I plan on this being a quick `docker stop docker_webserver_1 docker_scheduler_1 docker_worker_1`, `docker start docker_webserver_1 docker_scheduler_1 docker_worker_1` to load these files but need to test it out first.
+    - I plan on this being a quick `docker stop airflow_stack_docker_webserver_1 airflow_stack_docker_scheduler_1 airflow_stack_docker_worker_1`, `docker start airflow_stack_docker_webserver_1 airflow_stack_docker_scheduler_1 airflow_stack_docker_worker_1` to load these files but need to test it out first.
