@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:19.04
 
 # Never prompts the user for choices on installation/configuration of packages
 ENV DEBIAN_FRONTEND noninteractive
@@ -6,7 +6,7 @@ ENV TERM linux
 ENV AIRFLOW_HOME=/usr/local/airflow
 
 # Airflow
-ARG AIRFLOW_VERSION=1.10.4
+ARG AIRFLOW_VERSION=1.10.6
 ARG AIRFLOW_HOME=/usr/local/airflow
 ARG AIRFLOW_PACKAGES=all
 
@@ -29,7 +29,7 @@ RUN set -ex \
     && apt-get -y install -yqq apt-transport-https curl gnupg software-properties-common \
     && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
     && curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list \
-    && add-apt-repository ppa:jonathonf/python-3.6 \
+    # && add-apt-repository ppa:jonathonf/python-3.6 \
     && apt-get update -yqq \
     && ACCEPT_EULA=Y apt-get -y install msodbcsql17 mssql-tools \
     && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> /usr/local/airflow/.bash_profile \
@@ -58,11 +58,11 @@ RUN set -ex \
         locales \
         language-pack-en-base \
         language-pack-en \
-    && apt-get install -yqq --no-install-recommends \
-        python3.6-dev \
-        python3.6 \
-    && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1 \
-    && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2 \
+    # && apt-get install -yqq --no-install-recommends \
+    #     python3.6-dev \
+    #     python3.6 \
+    # && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1 \
+    && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2 \
     && locale-gen \
     && sed -i 's/^# en_US.UTF-8 UTF-8$/en_US.UTF-8 UTF-8/g' /etc/locale.gen \
     && locale-gen \
