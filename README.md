@@ -1,8 +1,10 @@
 # What is this.
 
-**Currently supported version of Airflow: 1.10.4**
+**Currently supported version of Airflow: 1.10.6**
 
-**Currently supported version of Python: 3.6.7**
+**Currently supported version of Python: 3.6.8**
+
+**Currently supported operating system: CentOS 7**
 
 This is a dockerized version of the airflow stack.
 
