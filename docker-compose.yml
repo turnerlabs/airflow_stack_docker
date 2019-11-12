@@ -25,7 +25,7 @@ services:
             - MYSQL_PASSWORD=airflow
             - MYSQL_DATABASE=airflow
         volumes:
-            - ./airflow:/usr/local/airflow
+            - ./airflow:/home/airflow/airflow
         ports:
             - "8080:8080"
         command: webserver
@@ -42,7 +42,7 @@ services:
             - mysql            
             - redis
         volumes:
-            - ./airflow:/usr/local/airflow
+            - ./airflow:/home/airflow/airflow
         environment:
             - LOAD_EX=n
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
@@ -58,7 +58,7 @@ services:
         links:
             - redis
         volumes:
-            - ./airflow:/usr/local/airflow
+            - ./airflow:/home/airflow/airflow
         environment:
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
             - EXECUTOR=Celery
