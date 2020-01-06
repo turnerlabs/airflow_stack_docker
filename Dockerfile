@@ -1,7 +1,7 @@
 FROM centos:7
 
 # Airflow
-ARG AIRFLOW_VERSION=1.10.6
+ARG AIRFLOW_VERSION=1.10.7
 ARG AIRFLOW_HOME=/home/airflow/airflow
 ARG AIRFLOW_PACKAGES=all
 
