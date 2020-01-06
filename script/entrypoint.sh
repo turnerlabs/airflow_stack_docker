@@ -114,7 +114,7 @@ wait_for_port() {
       exit 1
     fi
     echo "$(date) - waiting for $name at $host on $port... $j/$TRY_LOOP"
-    sleep 5
+    sleep 10
   done
 }
 
@@ -138,18 +138,21 @@ case "$1" in
       create_directories # create common directories
       wait_for_dbs # make sure metadata database is running before attempting to initialize
       airflow initdb # reinitilize the config with my settings applied
-      sleep 5
+      sleep 15
       generate_user # create an rbac user after everything is up and running
-      sleep 5
+      sleep 15
     fi
 
     update_requirements
+    sleep 10
     update_variables
+    sleep 10
     update_connections
+    sleep 10
     exec airflow webserver
     ;;
   worker|scheduler)
-    sleep 45 # gotta give the webserver a head start to generate all the files and directories
+    sleep 60 # gotta give the webserver a head start to generate all the files and directories
 
     update_requirements
     exec airflow "$@"
