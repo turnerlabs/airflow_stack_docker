@@ -2,9 +2,9 @@
 
 **Currently supported version of Airflow: 1.10.6**
 
-**Currently supported version of Python: 3.7.3**
+**Currently supported version of Python: 3.6.8**
 
-**Currently supported OS: Ubuntu 19.04**
+**Currently supported operating system: CentOS 7**
 
 This is a dockerized version of the airflow stack.
 

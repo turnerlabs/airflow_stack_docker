@@ -42,7 +42,7 @@ update_requirements() {
   echo "############# Start update_requirements #############"
   # Install custom python package if requirements.txt is present
   if [ -e "${AIRFLOW_HOME}/requirements/requirements.txt" ]; then
-    $(which pip) install --user -r ${AIRFLOW_HOME}/requirements/requirements.txt
+    pip install -r ${AIRFLOW_HOME}/requirements/requirements.txt
   else
     echo "No requirements.txt file found"
   fi
@@ -88,7 +88,7 @@ update_airflow_config() {
   sed -i -e "s/secure_mode = False/secure_mode = True/g" ${AIRFLOW_HOME}/airflow.cfg
   sed -i -e "s/donot_pickle = True/donot_pickle = False/g" ${AIRFLOW_HOME}/airflow.cfg
   sed -i -e "s/enable_xcom_pickling = True/enable_xcom_pickling = False/g" ${AIRFLOW_HOME}/airflow.cfg
-  sed -i -e "s/sql_alchemy_conn = sqlite:\/\/\/\/usr\/local\/airflow\/airflow.db/sql_alchemy_conn = mysql:\/\/$MYSQL_USER:$MYSQL_PASSWORD@$MYSQL_HOST:$MYSQL_PORT\/$MYSQL_DB/g" ${AIRFLOW_HOME}/airflow.cfg
+  sed -i -e "s/sql_alchemy_conn = sqlite:\/\/\/\/home\/airflow\/airflow\/airflow.db/sql_alchemy_conn = mysql:\/\/$MYSQL_USER:$MYSQL_PASSWORD@$MYSQL_HOST:$MYSQL_PORT\/$MYSQL_DB/g" ${AIRFLOW_HOME}/airflow.cfg
   sed -i -e "s/result_backend = db+mysql:\/\/airflow:airflow@localhost:3306\/airflow/result_backend = redis:\/\/$REDIS_PREFIX$REDIS_HOST:$REDIS_PORT\/0/g" ${AIRFLOW_HOME}/airflow.cfg
   sed -i -e "s/broker_url = sqla+mysql:\/\/airflow:airflow@localhost:3306\/airflow/broker_url = redis:\/\/$REDIS_PREFIX$REDIS_HOST:$REDIS_PORT\/1/g" ${AIRFLOW_HOME}/airflow.cfg
   sed -i -e "/auth_backend = airflow.api.auth.backend.default/d" ${AIRFLOW_HOME}/airflow.cfg
@@ -128,6 +128,14 @@ generate_user(){
   airflow create_user -u airflow -e airflow@airflow.com -p airflow -f airflow -l airflow -r Admin
   echo "############# Finished generate_user #############"  
 }
+
+whoami
+
+env
+
+which airflow
+
+ls -al /home/airflow/venv/bin
 
 case "$1" in
   webserver)
