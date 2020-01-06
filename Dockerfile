@@ -73,6 +73,7 @@ RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV \
     && echo 'PATH="$VIRTUAL_ENV/bin:$PATH:/opt/mssql-tools/bin"' >> ${AIRFLOW_USER_HOME}/.bash_profile \
     && echo 'AIRFLOW_HOME=/home/airflow/airflow' >> ${AIRFLOW_USER_HOME}/.bash_profile \
     && pip install pytest-runner \
+    && pip install "pymssql~=2.1" \
     && pip install apache-airflow[${AIRFLOW_PACKAGES}]==$AIRFLOW_VERSION \
     && pip install --upgrade jsonpatch
 
