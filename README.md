@@ -1,6 +1,6 @@
 # What is this.
 
-**Currently supported version of Airflow: 1.10.6**
+**Currently supported version of Airflow: 1.10.7**
 
 **Currently supported version of Python: 3.6.8**
 
