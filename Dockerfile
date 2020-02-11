@@ -75,7 +75,8 @@ RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV \
     && pip install pytest-runner \
     && pip install "pymssql~=2.1" \
     && pip install apache-airflow[${AIRFLOW_PACKAGES}]==$AIRFLOW_VERSION \
-    && pip install --upgrade jsonpatch
+    && pip install --upgrade jsonpatch \
+    && pip install "werkzeug==0.16.0"
 
 EXPOSE 8080 5555 8793
 
