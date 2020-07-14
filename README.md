@@ -1,10 +1,10 @@
 # What is this.
 
-**Currently supported version of Airflow: 1.10.7**
+**Currently supported version of Airflow: 1.10.11**
 
 **Currently supported version of Python: 3.6.8**
 
-**Currently supported operating system: CentOS 7**
+**Currently supported operating system: CentOS 8**
 
 This is a dockerized version of the airflow stack.
 
@@ -41,6 +41,10 @@ Once Docker for Mac is up and running you need to do the following 2 items to st
 --- Build the airflow docker image
 
 `docker build --rm -t turnerlabs/docker-airflow .`
+
+--- Delete the airflow directory in this repo.
+
+--- Create the airflow directory and chmod 777 to this directory.  This is needed for the compose up. 
 
 --- Run Docker Compose up to start up the airflow stack(webserver, scheduler, worker, redis, mysql)
 

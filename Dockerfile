@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:8
 
 # Airflow
 ARG AIRFLOW_VERSION=1.10.11
@@ -19,6 +19,8 @@ ENV VIRTUAL_ENV ${AIRFLOW_USER_HOME}/venv
 
 COPY ./script/entrypoint.sh /entrypoint.sh
 
+RUN yum -y install glibc-langpack-en
+
 RUN set -ex \
     && useradd -ms /bin/bash -d ${AIRFLOW_USER_HOME} airflow \
     && yum update -y \
@@ -27,14 +29,17 @@ RUN set -ex \
     && ACCEPT_EULA=Y yum install -y msodbcsql17 mssql-tools \
     && yum makecache \
     && yum install -y epel-release \
-    && yum makecache \    
-    && yum install -y gcc \
+    && yum makecache \
+    && yum install -y \
+    make \
+    mysql \
+    gcc \
     wget \
     unixODBC \
     unixODBC-devel \
     which \
     jq \
-    python-virtualenv \
+    python3-virtualenv \
     python3-pip \
     mysql-devel \
     python3-devel \
@@ -47,9 +52,9 @@ RUN set -ex \
     postgresql-devel \
     nmap-ncat \
     gcc-c++ \
-    && wget http://download.redis.io/releases/redis-5.0.8.tar.gz -O redis-stable.tar.gz \
+    && wget http://download.redis.io/redis-stable.tar.gz -O redis-stable.tar.gz \
     && tar xvzf redis-stable.tar.gz \
-    && cd redis-5.0.8/deps \
+    && cd redis-stable/deps \
     && make hiredis jemalloc linenoise lua \
     && cd .. \
     && make \

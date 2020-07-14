@@ -1,7 +1,7 @@
 version: '2.1'
 services:
     redis:
-        image: 'redis:4.0.11'
+        image: 'redis:5.0'
         command: ["redis-server", "--appendonly", "yes"]
     mysql:
         image: mysql:5.7
@@ -39,7 +39,7 @@ services:
         image: turnerlabs/docker-airflow:latest
         restart: "no"
         links:
-            - mysql            
+            - mysql
             - redis
         volumes:
             - ./airflow:/home/airflow/airflow
