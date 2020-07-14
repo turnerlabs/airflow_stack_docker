@@ -1,7 +1,7 @@
 FROM centos:7
 
 # Airflow
-ARG AIRFLOW_VERSION=1.10.7
+ARG AIRFLOW_VERSION=1.10.11
 ARG AIRFLOW_HOME=/home/airflow/airflow
 ARG AIRFLOW_PACKAGES=all
 
@@ -47,9 +47,9 @@ RUN set -ex \
     postgresql-devel \
     nmap-ncat \
     gcc-c++ \
-    && wget http://download.redis.io/redis-stable.tar.gz -O redis-stable.tar.gz \
+    && wget http://download.redis.io/releases/redis-5.0.8.tar.gz -O redis-stable.tar.gz \
     && tar xvzf redis-stable.tar.gz \
-    && cd redis-stable/deps \
+    && cd redis-5.0.8/deps \
     && make hiredis jemalloc linenoise lua \
     && cd .. \
     && make \
@@ -72,11 +72,8 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV \
     && echo 'PATH="$VIRTUAL_ENV/bin:$PATH:/opt/mssql-tools/bin"' >> ${AIRFLOW_USER_HOME}/.bash_profile \
     && echo 'AIRFLOW_HOME=/home/airflow/airflow' >> ${AIRFLOW_USER_HOME}/.bash_profile \
-    && pip install pytest-runner \
-    && pip install "pymssql~=2.1" \
-    && pip install apache-airflow[${AIRFLOW_PACKAGES}]==$AIRFLOW_VERSION \
-    && pip install --upgrade jsonpatch \
-    && pip install "werkzeug==0.16.0"
+    && pip install --upgrade setuptools \
+    && pip install apache-airflow[${AIRFLOW_PACKAGES}]==$AIRFLOW_VERSION
 
 EXPOSE 8080 5555 8793
 
